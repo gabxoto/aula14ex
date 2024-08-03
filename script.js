@@ -1,32 +1,20 @@
-function contar() {
-    var ini = document.getElementById('txtinicio')
-    var fim = document.getElementById('txtfim')
-    var passo = document.getElementById('txtpasso')
-    var res = document.getElementById('res')
+function tabuada() {
+    let num = document.getElementById('textn')
+    let tab = document.getElementById('seltab')
+    if (num.value.length == 0) {
+        alert('Por favor, digite um número!')
+    } else {
+        let n = Number(num.value)
+        let c = 1
+        tab.innerHTML = ''
+        while (c <= 10) {
+            let item = document.createElement('option')
+            item.text = `${n} x ${c} = ${n*c}`
+            item.value = `tab${c}`
+            tab.appendChild(item)
+            c++
+        }
+    }
 
-   if (ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0){
-    res.innerHTML = 'Impossível contar!'
-    alert('Erro')
-   } else {
-    res.innerHTML = 'Contando: <br> '
-    var i = Number(ini.value)
-    var f = Number(fim.value)
-    var p = Number(passo.value)
-    if (p <= 0){
-        alert('Passo inválido! Considerando PASSO 1')
-        p = 1
-    }
-    if (i < f){
-        // Contagem crescente
-        for(var c = i; c<= f; c+=p){
-            res.innerHTML += ` ${c} \u{1F449}`
-        }
-    }else{
-        // Contagem regressiva
-        for(var c = i; c>= f; c-=p){
-            res.innerHTML += ` ${c} \u{1F449}`
-        }
-    }
-    res.innerHTML += `\u{1F3C1}`
-   }
+
 }
